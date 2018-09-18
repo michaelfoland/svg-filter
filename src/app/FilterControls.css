@@ -1,0 +1,32 @@
+.filter-controls,
+.filter-controls > * {
+  color: #333;
+  display: flex;
+}
+
+.filter-controls input {
+  border: none;
+  background: #eee;
+}
+
+.attribute-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 8vw;
+}
+
+.attribute-controls > label {
+  margin: .5em 0;
+}
+
+.fe-tag {
+  display: inline-block;
+  margin-left: 4vw;
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+}

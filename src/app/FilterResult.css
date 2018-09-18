@@ -1,0 +1,34 @@
+.filter-result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 5vmin 0;
+}
+
+/*
+.filter-target {
+  filter: url(#svg);
+}
+*/
+
+.filter-target {
+  width: 25%;
+}
+
+.example-square-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-square {
+  width: 25vmin;
+  height: 25vmin;
+  background-color: #396;
+}
+
+.example-text {
+  font-size: 1.4rem;
+}
