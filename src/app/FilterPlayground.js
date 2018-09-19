@@ -22,11 +22,12 @@ class FilterPlayground extends Component {
   }
   
   render() {
-    console.log('this.props.attributes =',this.props.attributes);
-    
     return (
       <div className="filter-playground">
-        <button type="button" className="go-back-button" onClick={this.props.showMainMenu}>Choose a different filter</button>
+        <header className="filter-playground__header">
+          <h3>{this.props.filter.name}</h3>
+          <button type="button" className="go-back-button" onClick={this.props.showMainMenu}>Choose a different filter</button>
+        </header>
         <FilterControls 
           filter={this.props.filter}
           attributes={this.props.attributes}

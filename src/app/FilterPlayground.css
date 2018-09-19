@@ -1,5 +1,13 @@
 .filter-playground {
+  box-sizing: border-box;
   padding: 1rem;
+}
+
+.filter-playground__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 
 .go-back-button {

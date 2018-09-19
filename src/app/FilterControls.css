@@ -1,12 +1,37 @@
+/*
+.filter-controls {
+  border: solid 2px blue;
+}
+
+.hints, .code {
+  border: solid 2px purple;
+}
+
+.hints > *, .code > * {
+  border: solid 2px orange;
+}
+
+.hints > * > *, .code > * > * {
+  border: solid 2px green;
+}
+*/
+
+.filter-controls {
+  background-color: #ddd;
+  margin: .5rem 0;
+  padding: .5rem;
+  display: flex;
+}
+
 .filter-controls,
 .filter-controls > * {
   color: #333;
-  display: flex;
 }
 
 .filter-controls input {
   border: none;
-  background: #eee;
+  background: #bbb;
+  margin: 0 .25rem;
 }
 
 .attribute-controls {
@@ -18,7 +43,19 @@
 }
 
 .attribute-controls > label {
-  margin: .5em 0;
+  padding: .5rem;
+  border-radius: .5rem;
+  margin: .25rem 0;
+  display: flex;
+  flex-wrap: nowrap;
+  transition: background 150ms linear;
+}
+
+.attribute-controls > label.selected {
+  background: #6c9;
+}
+.attribute-controls > label > span {
+  white-space: nowrap;
 }
 
 .fe-tag {
@@ -27,6 +64,83 @@
 }
 
 .code {
+  font-size: 1.25rem;
   display: flex;
   flex-direction: column;
+  border-right: #bbb solid 2px;
+  padding: .5rem;
+}
+
+
+.potential-value__button {
+  border: none;
+  padding: .25em;
+  border-radius: .25em;
+  margin: .25em;
+  background: #bbb;
+}
+
+.potential-value {
+  margin: 0 .25em;
+}
+
+.potential-value__button:hover {
+  filter: brightness(.9);
+}
+
+
+.hints {
+  font-size: 1.25rem;
+  padding: .5rem;
+  flex-grow: 1;
+  /*
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  */
+}
+
+.hints__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or leave it as stretch? */
+}
+
+.hints__info-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hints__initial {
+  text-align: center;
+}
+
+
+.hints__values {
+display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.filter-controls > svg {
+  position: absolute; 
+  pointer-events: none;
+}
+
+.default__notes,
+.potential-value__notes {
+  font-size: smaller;
+  margin-left: .5em;
+}
+
+.default__notes::after,
+.potential-value__notes::after  {
+  content: ']';
+}
+
+.default__notes::before,
+.potential-value__notes::before  {
+  content: '[';
 }
