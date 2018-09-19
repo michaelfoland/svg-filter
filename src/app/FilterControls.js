@@ -8,7 +8,9 @@ class FilterControls extends Component {
    */
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+        filterAttributes: {}
+      };
 
       // give state the attributes relevant to this filter
       props.attributes.forEach(attribute => {
@@ -16,29 +18,27 @@ class FilterControls extends Component {
       });
     }
   
-  updateAttribute = (e) => {
+  updateInput = (e) => {
     let newState = {};
     newState[e.target.dataset.attribute] = e.target.value;
 
-    // Order is probably important here
     this.setState(newState);
+  }
+
+  updateAttribute = (e) => {
+    let newAttribute = {};
+    newAttribute[e.target.dataset.attribute] = e.target.value;
+    this.setState(prevState => {
+      console.log('prevState first =',prevState);
+      Object.assign(prevState.filterAttributes,newAttribute);
+      console.log('prevState now =',prevState);
+      return prevState;
+    }, console.log('newState =',this.state));
+    
     this.props.updateSvgId();
   }
   
   render() {
-    // Put only non-empty values into filterProps array
-    const keys = Object.keys(this.state);
-    
-    let filterProps = {};
-    
-    // Here we're just assuming values are valid.
-    // At some point we'll have to check for validity
-    keys.forEach(key => {
-      if (this.state[key] !== '') {
-        filterProps[key] = this.state[key];
-      }
-    });
-    
     return (
         <div className="filter-controls">
           <div className="code">
@@ -46,8 +46,13 @@ class FilterControls extends Component {
             <span className="fe-tag">&lt;{this.props.filter.name}</span>
             <div className="attribute-controls">  
               {this.props.filter.attributes.map(attribute => 
-                <label key={attribute.name}>{attribute.name} = "
-                  <input type="text" onChange={this.updateAttribute} data-attribute={attribute.name} />"
+                <label 
+                  key={attribute.name}>{attribute.name} = "
+                  <input 
+                    type="text" 
+                    onChange={this.updateInput} 
+                    onBlur={this.updateAttribute}
+                    data-attribute={attribute.name} />"
                 </label>  
               )}
             </div>
@@ -63,7 +68,7 @@ class FilterControls extends Component {
             xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id={this.props.svgId} x="0" y="0">
-              {React.createElement(this.props.filter.name,filterProps,'')}
+              {React.createElement(this.props.filter.name,this.state.filterAttributes,'')}
               </filter>
             </defs>
           </svg>
