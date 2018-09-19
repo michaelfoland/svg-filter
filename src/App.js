@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MainMenu from './app/MainMenu.js';
 import FilterPlayground from './app/FilterPlayground.js';
-import { filters, attributes } from './app/filters.js';
+import { filters } from './app/filters.js';
 
 
 class App extends Component {
@@ -28,6 +28,10 @@ class App extends Component {
     });
   };
 
+  getAllFilters() {
+    return filters.map(filter => filter.name);
+  }
+  
   getSelectedFilter() {
     let targetFilter = filters.find(item => item.name === this.state.selectedFilter);
     
@@ -35,13 +39,10 @@ class App extends Component {
   }
 
   getSelectedAttributes() {
-    let targetFilter = this.getSelectedFilter();
+    let targetFilter = this.getSelectedFilter().attributes;
     
-    return targetFilter.attributes.map(targetAttribute => {
-      return attributes.find(attribute => {
-        return attribute.name === targetAttribute;
-      });
-    });
+    return targetFilter
+    // return targetFilter.attributes.map(attribute => attribute.name);
   }
   
   render() {
@@ -49,11 +50,13 @@ class App extends Component {
     
     const view = (currentView === 'menu' ? 
       <MainMenu 
-        showFilterPlayground={this.toggleView}/> :
+        showFilterPlayground={this.toggleView}
+        filters={this.getAllFilters()}/> :
       <FilterPlayground 
         showMainMenu={this.toggleView}
         filter={this.getSelectedFilter()}
         attributes={this.getSelectedAttributes()}/>);
+                
     return (
       <div>{ view }</div>
     );

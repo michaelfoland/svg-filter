@@ -7,13 +7,7 @@
   margin: 5vmin 0;
 }
 
-/*
-.filter-target {
-  filter: url(#svg);
-}
-*/
-
-.filter-target {
+.filter-result > * {
   width: 25%;
 }
 
