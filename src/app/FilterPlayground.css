@@ -1,0 +1,17 @@
+.filter-playground {
+  padding: 1rem;
+}
+
+.go-back-button {
+  border: none;
+  font-size: 1.5rem;
+  padding: .3rem .6rem;
+  background: #944;
+  color: #fdd;
+  transition: filter 150ms linear;
+}
+
+.go-back-button:hover {
+  filter: brightness(0.9);
+}
+

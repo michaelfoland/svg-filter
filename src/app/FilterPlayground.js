@@ -26,7 +26,7 @@ class FilterPlayground extends Component {
     
     return (
       <div className="filter-playground">
-        <button type="button" onClick={this.props.showMainMenu}>Back to menu</button>
+        <button type="button" className="go-back-button" onClick={this.props.showMainMenu}>Choose a different filter</button>
         <FilterControls 
           filter={this.props.filter}
           attributes={this.props.attributes}
